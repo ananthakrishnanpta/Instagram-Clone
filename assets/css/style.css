@@ -1,0 +1,293 @@
+/* Import order: tokens -> reset -> layout -> component styles */
+@import url("./variables.css");
+@import url("./reset.css");
+@import url("./layout.css");
+
+/* Keep feed width and spacing close to Instagram */
+.feed-column {
+    max-width: 630px;
+}
+
+.section-card {
+    border: 1px solid var(--ig-border);
+    border-radius: var(--radius-md);
+    background: var(--ig-surface);
+}
+
+/* Sidebar link behavior */
+.ig-nav-link {
+    border-radius: var(--radius-md);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.ig-nav-link:hover {
+    background: #f2f2f2;
+    transform: translateX(1px);
+}
+
+.ig-nav-link i {
+    font-size: 1.35rem;
+}
+
+/* Story strip uses scroll-snap for a native feel */
+.stories-list {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.stories-list>* {
+    scroll-snap-align: start;
+}
+
+.stories-list::-webkit-scrollbar {
+    display: none;
+}
+
+.story-avatar-wrap {
+    width: 74px;
+    height: 74px;
+    background: linear-gradient(45deg, var(--ig-story-start), var(--ig-story-mid), var(--ig-story-end));
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.story-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover;
+}
+
+.story-entry,
+.highlight-entry {
+    min-width: 74px;
+}
+
+/* Highlights strip mirrors story behavior but uses neutral ring */
+.highlights-list {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.highlights-list>* {
+    scroll-snap-align: start;
+}
+
+.highlights-list::-webkit-scrollbar {
+    display: none;
+}
+
+.highlight-avatar-wrap {
+    width: 74px;
+    height: 74px;
+    border: 1px solid #d9d9d9;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.highlight-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Desktop-only arrow controls for stories/highlights carousels */
+.story-nav-btn {
+    width: 2rem;
+    opacity: 1;
+}
+
+.story-nav-btn .carousel-control-prev-icon,
+.story-nav-btn .carousel-control-next-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.65);
+    background-size: 60% 60%;
+}
+
+/* Feed cards */
+.post-card {
+    border: 1px solid var(--ig-border);
+    background: var(--ig-surface);
+}
+
+.post-header-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.icon-btn {
+    border: 0;
+    background: transparent;
+    color: var(--ig-text);
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0;
+}
+
+.icon-btn:hover {
+    opacity: 0.7;
+}
+
+.post-caption,
+.post-comments,
+.post-time {
+    font-size: 0.9rem;
+}
+
+.post-comments,
+.post-time,
+.muted-copy {
+    color: var(--ig-muted);
+}
+
+/* Suggestions / side rail */
+.profile-mini-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.suggested-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.link-accent {
+    color: var(--ig-accent);
+    font-weight: 600;
+}
+
+.link-accent:hover {
+    color: #007ad1;
+}
+
+/* Explore masonry-ish grid with CSS columns */
+.explore-grid {
+    column-count: 3;
+    column-gap: 0.75rem;
+}
+
+.explore-item {
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.explore-item img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Reels cards */
+.reel-card {
+    border: 1px solid var(--ig-border);
+    border-radius: var(--radius-sm);
+    background: var(--ig-surface);
+}
+
+.reel-cover {
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Mobile bars */
+.ig-mobile-brand {
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+    line-height: 1;
+}
+
+.mobile-icon {
+    font-size: 1.4rem;
+    color: var(--ig-text);
+}
+
+/* Utility helpers */
+.small-copy {
+    font-size: 0.8rem;
+}
+
+.counter-pill {
+    font-size: 0.72rem;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .ig-sidebar-label {
+        display: none;
+    }
+
+    .ig-sidebar {
+        width: var(--sidebar-collapsed-width);
+    }
+
+    .ig-main {
+        margin-left: var(--sidebar-collapsed-width);
+    }
+}
+
+@media (max-width: 991.98px) {
+    body {
+        padding-top: var(--mobile-top-nav-height);
+        padding-bottom: var(--mobile-bottom-nav-height);
+    }
+
+    .ig-main {
+        margin-left: 0;
+        padding-top: 1rem;
+    }
+
+    .feed-column {
+        max-width: 100%;
+    }
+
+    .explore-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .stories-list .story-entry {
+        min-width: 72px;
+    }
+
+    .highlights-list .highlight-entry {
+        min-width: 72px;
+    }
+
+    .explore-grid {
+        column-count: 2;
+        column-gap: 0.5rem;
+    }
+}
+

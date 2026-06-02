@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Krishna • InstaView</title>
+    <meta name="description" content="InstaView profile page for Krishna with posts, highlights and reels.">
+    <link rel="canonical" href="https://your-github-username.github.io/InstagramClone/profile.html">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="ig-sidebar d-none d-lg-flex flex-column p-3 p-xl-4">
+            <header class="mb-4">
+                <h1 class="h4 mb-0 fw-semibold">InstaView</h1>
+                <p class="small text-secondary mb-0">Social UI Showcase</p>
+            </header>
+
+            <nav class="nav flex-column gap-1" aria-label="Primary navigation">
+                <a class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2" href="index.html">
+                    <i class="bi bi-house-door-fill"></i><span class="ig-sidebar-label">Home</span>
+                </a>
+                <a class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2" href="index.html#explore">
+                    <i class="bi bi-compass"></i><span class="ig-sidebar-label">Explore</span>
+                </a>
+                <a class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2 active" href="profile.html"
+                    aria-current="page">
+                    <i class="bi bi-person-circle"></i><span class="ig-sidebar-label">Profile</span>
+                </a>
+            </nav>
+        </aside>
+
+        <header class="ig-mobile-top-nav fixed-top d-lg-none px-3 d-flex align-items-center justify-content-between">
+            <h2 class="ig-mobile-brand m-0">Krishna</h2>
+            <a class="btn p-0 border-0" href="index.html" aria-label="Go to home feed">
+                <i class="bi bi-house-door mobile-icon"></i>
+            </a>
+        </header>
+
+        <main class="ig-main">
+            <div class="container profile-container">
+                <section class="profile-header section-card p-3 p-md-4 mb-4">
+                    <div class="row align-items-center g-4">
+                        <div class="col-12 col-md-4 text-center">
+                            <img class="profile-avatar mx-auto" src="media/dp/krishna.jpg"
+                                alt="Profile picture of Krishna">
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                                <h2 class="h4 mb-0">Krishna</h2>
+                                <button class="btn btn-sm btn-outline-dark">Edit profile</button>
+                                <button class="btn btn-sm btn-outline-dark">View archive</button>
+                                <button class="btn btn-sm btn-outline-dark"><i class="bi bi-gear"></i></button>
+                            </div>
+                            <div class="d-flex gap-4 mb-3 profile-stats">
+                                <p class="mb-0"><strong>128</strong> posts</p>
+                                <p class="mb-0"><strong>14.2K</strong> followers</p>
+                                <p class="mb-0"><strong>832</strong> following</p>
+                            </div>
+                            <p class="fw-semibold mb-1">Krishna</p>
+                            <p class="mb-0 muted-copy">Frontend developer | Design systems | Building UI details.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-card p-3 mb-4" aria-label="Highlights">
+                    <h3 class="h6 mb-3 fw-semibold">Highlights</h3>
+                    <div class="highlights-list d-flex gap-3 pb-1">
+                        <article class="highlight-entry text-center">
+                            <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                    src="media/downloaded/img-021.jpg" alt="Travel highlight"></div>
+                            <p class="small-copy mt-2 mb-0 text-truncate">Travel</p>
+                        </article>
+                        <article class="highlight-entry text-center">
+                            <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                    src="media/downloaded/img-022.jpg" alt="Code highlight"></div>
+                            <p class="small-copy mt-2 mb-0 text-truncate">Code</p>
+                        </article>
+                        <article class="highlight-entry text-center">
+                            <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                    src="media/downloaded/img-023.jpg" alt="Cafe highlight"></div>
+                            <p class="small-copy mt-2 mb-0 text-truncate">Cafe</p>
+                        </article>
+                        <article class="highlight-entry text-center">
+                            <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                    src="media/downloaded/img-026.jpg" alt="Work highlight"></div>
+                            <p class="small-copy mt-2 mb-0 text-truncate">Work</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="section-card p-3 mb-4">
+                    <ul class="nav nav-tabs justify-content-center profile-tabs mb-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#"><i class="bi bi-grid-3x3"></i> Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-play-btn"></i> Reels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-person-square"></i> Tagged</a>
+                        </li>
+                    </ul>
+
+                    <div class="row g-2 g-md-3">
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-031.jpg" alt="Post 1"></div>
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-032.jpg" alt="Post 2"></div>
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-033.jpg" alt="Post 3"></div>
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-034.jpg" alt="Post 4"></div>
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-035.jpg" alt="Post 5"></div>
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-036.jpg" alt="Post 6"></div>
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-041.jpg" alt="Post 7"></div>
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-042.jpg" alt="Post 8"></div>
+                        <div class="col-4"><img class="profile-grid-image" src="media/downloaded/img-043.jpg" alt="Post 9"></div>
+                    </div>
+                </section>
+
+                <section class="small-copy text-secondary" aria-label="Footer links">
+                    <p class="mb-2">About • Help • Press • API • Jobs • Privacy • Terms • Locations</p>
+                    <p class="mb-2">Language • Meta Verified</p>
+                    <p class="mb-0">© 2026 InstaView from Meta</p>
+                </section>
+            </div>
+        </main>
+
+        <nav class="ig-mobile-bottom-nav fixed-bottom d-lg-none d-flex align-items-center">
+            <ul class="d-flex justify-content-around align-items-center w-100 mb-0 px-2">
+                <li><a href="index.html#main-feed" aria-label="Go to home"><i class="bi bi-house-door mobile-icon"></i></a></li>
+                <li><a href="index.html#explore" aria-label="Go to explore"><i class="bi bi-search mobile-icon"></i></a></li>
+                <li><a href="index.html" aria-label="Create post"><i class="bi bi-plus-square mobile-icon"></i></a></li>
+                <li><a href="index.html#reels" aria-label="Go to reels"><i class="bi bi-play-btn mobile-icon"></i></a></li>
+                <li><a href="profile.html" aria-label="Go to profile"><i class="bi bi-person-circle-fill mobile-icon"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

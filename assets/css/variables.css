@@ -1,0 +1,22 @@
+:root {
+    --ig-bg: #fafafa;
+    --ig-surface: #ffffff;
+    --ig-border: #dbdbdb;
+    --ig-text: #262626;
+    --ig-muted: #8e8e8e;
+    --ig-accent: #0095f6;
+    --ig-danger: #ed4956;
+    --ig-success: #2ecc71;
+    --ig-story-start: #feda75;
+    --ig-story-mid: #d62976;
+    --ig-story-end: #4f5bd5;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    --sidebar-width: 245px;
+    --sidebar-collapsed-width: 72px;
+    --mobile-top-nav-height: 58px;
+    --mobile-bottom-nav-height: 58px;
+}

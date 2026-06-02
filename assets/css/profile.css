@@ -1,0 +1,46 @@
+/* Profile page specific layout refinements */
+.profile-container {
+    max-width: 975px;
+}
+
+.profile-header {
+    border-radius: var(--radius-md);
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-stats {
+    flex-wrap: wrap;
+}
+
+.profile-tabs .nav-link {
+    border: 0;
+    color: var(--ig-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.profile-tabs .nav-link.active {
+    color: var(--ig-text);
+    font-weight: 600;
+}
+
+.profile-grid-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+@media (max-width: 767.98px) {
+    .profile-avatar {
+        width: 92px;
+        height: 92px;
+    }
+}

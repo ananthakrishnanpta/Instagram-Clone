@@ -1,57 +1,821 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>InstaView - Instagram Clone UI with Bootstrap</title>
+    <meta name="description"
+        content="InstaView is a responsive Instagram clone built with semantic HTML, CSS and Bootstrap components only, optimized for SEO and static hosting.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="author" content="InstaView Team">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="canonical" href="https://your-github-username.github.io/InstagramClone/">
 
-    <!-- BS Stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Open Graph / social previews -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="InstaView - Instagram Clone UI with Bootstrap">
+    <meta property="og:description"
+        content="A feature-rich static Instagram clone interface made with Bootstrap and no custom JavaScript.">
+    <meta property="og:url" content="https://your-github-username.github.io/InstagramClone/">
+    <meta property="og:image" content="media/downloaded/img-028.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="InstaView - Instagram Clone UI with Bootstrap">
+    <meta name="twitter:description" content="Responsive Instagram-style static frontend for GitHub Pages.">
+    <meta name="twitter:image" content="media/downloaded/img-028.jpg">
 
-    <!-- BS Icons -->
+    <!-- Bootstrap and icon set -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
+    <!-- Local stylesheet bundle -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Structured metadata for search engines -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "InstaView",
+            "url": "https://your-github-username.github.io/InstagramClone/",
+            "description": "A static Instagram-inspired social media interface powered by Bootstrap."
+        }
+    </script>
 </head>
 
 <body>
-    <header>
+    <a class="visually-hidden-focusable p-2 bg-white border rounded position-absolute top-0 start-0 m-2"
+        href="#main-feed">Skip to main content</a>
 
-    </header>
-    <main>
+    <div class="app-shell">
+        <!-- Desktop/tablet sidebar -->
+        <aside class="ig-sidebar d-none d-lg-flex flex-column p-3 p-xl-4">
+            <header class="mb-4">
+                <h1 class="h4 mb-0 fw-semibold">InstaView</h1>
+                <p class="small text-secondary mb-0">Social UI Showcase</p>
+            </header>
 
-    </main>
-    <footer class="fixed-bottom">
-        <nav class="navbar bg-dark">
-            <div class="container-fluid">
-                <ul class="d-flex w-100 justify-content-between mx-auto">
-                    <li class="nav-item">
-                        <i class="bi bi-house-door-fill text-light nav-link"></i>
+            <nav class="nav flex-column gap-1" aria-label="Primary navigation">
+                <a class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2 active" href="#main-feed"
+                    aria-current="page">
+                    <i class="bi bi-house-door-fill"></i><span class="ig-sidebar-label">Home</span>
+                </a>
+                <a class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2" href="#explore">
+                    <i class="bi bi-compass"></i><span class="ig-sidebar-label">Explore</span>
+                </a>
+                <button class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2 btn text-start" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#searchPanel" aria-controls="searchPanel">
+                    <i class="bi bi-search"></i><span class="ig-sidebar-label">Search</span>
+                </button>
+                <a class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2" href="#reels">
+                    <i class="bi bi-play-btn"></i><span class="ig-sidebar-label">Reels</span>
+                </a>
+                <button class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2 btn text-start" type="button"
+                    data-bs-toggle="modal" data-bs-target="#messagesModal">
+                    <i class="bi bi-send"></i><span class="ig-sidebar-label">Messages</span>
+                </button>
+                <button class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2 btn text-start" type="button"
+                    data-bs-toggle="modal" data-bs-target="#notificationsModal">
+                    <i class="bi bi-heart"></i><span class="ig-sidebar-label">Notifications</span>
+                </button>
+                <button class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2 btn text-start" type="button"
+                    data-bs-toggle="modal" data-bs-target="#createModal">
+                    <i class="bi bi-plus-square"></i><span class="ig-sidebar-label">Create</span>
+                </button>
+                <a class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2" href="profile.html">
+                    <i class="bi bi-person-circle"></i><span class="ig-sidebar-label">Profile</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto pt-3">
+                <button class="ig-nav-link d-flex align-items-center gap-3 px-3 py-2 btn text-start w-100"
+                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-list"></i><span class="ig-sidebar-label">More</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Saved</a></li>
+                    <li><a class="dropdown-item" href="#">Switch account</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
                     </li>
-                    <li class="nav-item">
-                        <i class="bi bi-play-btn text-light nav-link"></i>
-                    </li>
-                    <li class="nav-item">
-                        <i class="bi bi-send-arrow-up text-light nav-link"></i>
-                    </li>
-                    <li class="nav-item">
-                        <i class="bi bi-search text-light nav-link"></i>
-                    </li>
-                    <li class="nav-item">
-                        <i class="bi bi-house-door-fill text-light nav-link"></i>
-                    </li>
+                    <li><a class="dropdown-item" href="#">Log out</a></li>
                 </ul>
-
             </div>
+        </aside>
 
+        <!-- Mobile top bar -->
+        <header class="ig-mobile-top-nav fixed-top d-lg-none px-3 d-flex align-items-center justify-content-between">
+            <h2 class="ig-mobile-brand m-0">InstaView</h2>
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn p-0 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchPanel"
+                    aria-label="Open search">
+                    <i class="bi bi-search mobile-icon"></i>
+                </button>
+                <button class="btn p-0 border-0 position-relative" type="button" data-bs-toggle="modal"
+                    data-bs-target="#notificationsModal" aria-label="Open notifications">
+                    <i class="bi bi-heart mobile-icon"></i>
+                    <span
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger counter-pill">7</span>
+                </button>
+                <button class="btn p-0 border-0" type="button" data-bs-toggle="modal" data-bs-target="#messagesModal"
+                    aria-label="Open messages">
+                    <i class="bi bi-send mobile-icon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="ig-main" id="main-feed">
+            <div class="container-xxl">
+                <div class="row justify-content-center gx-4 gx-xxl-5">
+                    <!-- Feed column -->
+                    <section class="col-12 col-md-10 col-lg-7 feed-column">
+                        <!-- Stories -->
+                        <section class="section-card p-3 mb-4" aria-label="Stories">
+                            <h2 class="h6 mb-3 fw-semibold">Stories</h2>
+                            <div class="stories-list d-flex gap-3 pb-1 d-lg-none">
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-001.jpg" alt="Your story"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">You</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-018.jpg" alt="Story by aditya"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">aditya.dev</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-020.jpg" alt="Story by kaira"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">kaira.design</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-021.jpg" alt="Story by ansh"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">ansh.codes</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-022.jpg" alt="Story by meera"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">meera.travel</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-023.jpg" alt="Story by ryan"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">ryan.fit</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-024.jpg" alt="Story by naina"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">naina.food</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-026.jpg" alt="Story by devon"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">devon.fx</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-027.jpg" alt="Story by riya"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">riya.daily</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-002.jpg" alt="Story by ronit"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">ronit.tech</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-001.jpg" alt="Story by alia"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">alia.style</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-014.jpg" alt="Story by aman"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">aman.geo</p>
+                                </article>
+                                <article class="story-entry text-center">
+                                    <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                            src="media/downloaded/img-001.jpg" alt="Story by zara"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">zara.run</p>
+                                </article>
+                            </div>
+
+                            <!-- Desktop carousel with next/prev arrows -->
+                            <div id="storiesDesktopCarousel" class="carousel slide d-none d-lg-block"
+                                data-bs-interval="false">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="d-flex gap-3 px-4">
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-001.jpg" alt="Your story"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">You</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-018.jpg" alt="Story by aditya"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">aditya.dev</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-020.jpg" alt="Story by kaira"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">kaira.design</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-021.jpg" alt="Story by ansh"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">ansh.codes</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-022.jpg" alt="Story by meera"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">meera.travel</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-023.jpg" alt="Story by ryan"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">ryan.fit</p>
+                                            </article>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex gap-3 px-4">
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-024.jpg" alt="Story by naina"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">naina.food</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-026.jpg" alt="Story by devon"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">devon.fx</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-027.jpg" alt="Story by riya"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">riya.daily</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Story by ronit"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">ronit.tech</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-001.jpg" alt="Story by alia"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">alia.style</p>
+                                            </article>
+                                            <article class="story-entry text-center">
+                                                <div class="story-avatar-wrap mx-auto"><img class="story-avatar"
+                                                        src="media/downloaded/img-014.jpg" alt="Story by aman"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">aman.geo</p>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev story-nav-btn" type="button"
+                                    data-bs-target="#storiesDesktopCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous stories</span>
+                                </button>
+                                <button class="carousel-control-next story-nav-btn" type="button"
+                                    data-bs-target="#storiesDesktopCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next stories</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Highlights -->
+                        <section class="section-card p-3 mb-4" aria-label="Highlights">
+                            <header class="d-flex align-items-center justify-content-between mb-3">
+                                <h2 class="h6 mb-0 fw-semibold">Highlights</h2>
+                                <a class="small-copy link-accent" href="#">Manage</a>
+                            </header>
+                            <div class="highlights-list d-flex gap-3 pb-1 d-lg-none">
+                                <article class="highlight-entry text-center">
+                                    <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                            src="media/downloaded/img-002.jpg" alt="Travel highlight"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">Travel</p>
+                                </article>
+                                <article class="highlight-entry text-center">
+                                    <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                            src="media/downloaded/img-002.jpg" alt="Code highlight"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">Code</p>
+                                </article>
+                                <article class="highlight-entry text-center">
+                                    <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                            src="media/downloaded/img-005.jpg" alt="Cafe highlight"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">Cafe</p>
+                                </article>
+                                <article class="highlight-entry text-center">
+                                    <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                            src="media/downloaded/img-002.jpg" alt="Builds highlight"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">Builds</p>
+                                </article>
+                                <article class="highlight-entry text-center">
+                                    <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                            src="media/downloaded/img-002.jpg" alt="Gym highlight"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">Gym</p>
+                                </article>
+                                <article class="highlight-entry text-center">
+                                    <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                            src="media/downloaded/img-002.jpg" alt="Food highlight"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">Food</p>
+                                </article>
+                                <article class="highlight-entry text-center">
+                                    <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                            src="media/downloaded/img-002.jpg" alt="Ideas highlight"></div>
+                                    <p class="small-copy mt-2 mb-0 text-truncate">Ideas</p>
+                                </article>
+                            </div>
+
+                            <!-- Desktop highlights carousel with arrows -->
+                            <div id="highlightsDesktopCarousel" class="carousel slide d-none d-lg-block"
+                                data-bs-interval="false">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="d-flex gap-3 px-4">
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Travel highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Travel</p>
+                                            </article>
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Code highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Code</p>
+                                            </article>
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-005.jpg" alt="Cafe highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Cafe</p>
+                                            </article>
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Builds highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Builds</p>
+                                            </article>
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Gym highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Gym</p>
+                                            </article>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex gap-3 px-4">
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Food highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Food</p>
+                                            </article>
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Ideas highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Ideas</p>
+                                            </article>
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Shoots highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Shoots</p>
+                                            </article>
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-002.jpg" alt="Work highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Work</p>
+                                            </article>
+                                            <article class="highlight-entry text-center">
+                                                <div class="highlight-avatar-wrap mx-auto"><img class="highlight-avatar"
+                                                        src="media/downloaded/img-001.jpg" alt="Moments highlight"></div>
+                                                <p class="small-copy mt-2 mb-0 text-truncate">Moments</p>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev story-nav-btn" type="button"
+                                    data-bs-target="#highlightsDesktopCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous highlights</span>
+                                </button>
+                                <button class="carousel-control-next story-nav-btn" type="button"
+                                    data-bs-target="#highlightsDesktopCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next highlights</span>
+                                </button>
+                            </div>
+                        </section>
+
+                        <!-- Feed post 1 -->
+                        <article class="post-card rounded-3 overflow-hidden mb-4" aria-labelledby="post-title-1">
+                            <header class="d-flex align-items-center justify-content-between p-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img class="post-header-avatar" src="media/downloaded/img-001.jpg"
+                                        alt="Profile picture of aditya.dev">
+                                    <div>
+                                        <h2 id="post-title-1" class="h6 mb-0 fw-semibold">aditya.dev</h2>
+                                        <p class="small-copy mb-0 text-secondary">Bengaluru, India</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-sm border-0 p-0" type="button" data-bs-toggle="dropdown"
+                                    aria-label="More options">
+                                    <i class="bi bi-three-dots fs-5"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Report</a></li>
+                                    <li><a class="dropdown-item" href="#">Unfollow</a></li>
+                                    <li><a class="dropdown-item" href="#">Copy link</a></li>
+                                </ul>
+                            </header>
+                            <img class="post-image" src="media/downloaded/img-041.jpg"
+                                alt="Developer setup with laptop and notes">
+                            <div class="p-3">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="d-flex gap-3">
+                                        <button class="icon-btn" type="button" aria-label="Like post"><i
+                                                class="bi bi-heart"></i></button>
+                                        <button class="icon-btn" type="button" aria-label="Open comments"><i
+                                                class="bi bi-chat"></i></button>
+                                        <button class="icon-btn" type="button" aria-label="Share post"><i
+                                                class="bi bi-send"></i></button>
+                                    </div>
+                                    <button class="icon-btn" type="button" aria-label="Save post"><i
+                                            class="bi bi-bookmark"></i></button>
+                                </div>
+                                <p class="mb-1 fw-semibold">18,402 likes</p>
+                                <p class="post-caption mb-1"><strong>aditya.dev</strong> Shipping the profile page
+                                    redesign with pure Bootstrap utilities and semantic tags.</p>
+                                <a class="post-comments d-inline-block mb-1" href="#">View all 289 comments</a>
+                                <p class="post-time mb-0 text-uppercase small-copy">2 hours ago</p>
+                            </div>
+                        </article>
+
+                        <!-- Feed post 2 with carousel -->
+                        <article class="post-card rounded-3 overflow-hidden mb-4" aria-labelledby="post-title-2">
+                            <header class="d-flex align-items-center justify-content-between p-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img class="post-header-avatar" src="media/downloaded/img-017.jpg"
+                                        alt="Profile picture of meera.travel">
+                                    <div>
+                                        <h2 id="post-title-2" class="h6 mb-0 fw-semibold">meera.travel</h2>
+                                        <p class="small-copy mb-0 text-secondary">Goa</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-sm border-0 p-0" type="button" data-bs-toggle="dropdown"
+                                    aria-label="More options">
+                                    <i class="bi bi-three-dots fs-5"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Report</a></li>
+                                    <li><a class="dropdown-item" href="#">Mute</a></li>
+                                    <li><a class="dropdown-item" href="#">Go to post</a></li>
+                                </ul>
+                            </header>
+                            <div id="travelCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#travelCarousel" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#travelCarousel" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#travelCarousel" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="media/downloaded/img-042.jpg" class="post-image"
+                                            alt="Beach sunrise">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="media/downloaded/img-043.jpg" class="post-image"
+                                            alt="Palm trees near the shore">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="media/downloaded/img-044.jpg" class="post-image"
+                                            alt="Coastal road view">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#travelCarousel"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#travelCarousel"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            <div class="p-3">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="d-flex gap-3">
+                                        <button class="icon-btn" type="button" aria-label="Like post"><i
+                                                class="bi bi-heart"></i></button>
+                                        <button class="icon-btn" type="button" aria-label="Open comments"><i
+                                                class="bi bi-chat"></i></button>
+                                        <button class="icon-btn" type="button" aria-label="Share post"><i
+                                                class="bi bi-send"></i></button>
+                                    </div>
+                                    <button class="icon-btn" type="button" aria-label="Save post"><i
+                                            class="bi bi-bookmark-fill"></i></button>
+                                </div>
+                                <p class="mb-1 fw-semibold">9,218 likes</p>
+                                <p class="post-caption mb-1"><strong>meera.travel</strong> Last weekend in Goa, still
+                                    not over this sunset light.</p>
+                                <a class="post-comments d-inline-block mb-1" href="#">View all 103 comments</a>
+                                <p class="post-time mb-0 text-uppercase small-copy">7 hours ago</p>
+                            </div>
+                        </article>
+
+                        <!-- Feed post 3 -->
+                        <article class="post-card rounded-3 overflow-hidden mb-4" aria-labelledby="post-title-3">
+                            <header class="d-flex align-items-center justify-content-between p-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img class="post-header-avatar" src="media/downloaded/img-019.jpg"
+                                        alt="Profile picture of ui.patterns">
+                                    <div>
+                                        <h2 id="post-title-3" class="h6 mb-0 fw-semibold">ui.patterns</h2>
+                                        <p class="small-copy mb-0 text-secondary">Studio highlight</p>
+                                    </div>
+                                </div>
+                                <button class="btn btn-sm border-0 p-0" type="button" data-bs-toggle="dropdown"
+                                    aria-label="More options">
+                                    <i class="bi bi-three-dots fs-5"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Save</a></li>
+                                    <li><a class="dropdown-item" href="#">Share profile</a></li>
+                                </ul>
+                            </header>
+                            <img class="post-image" src="media/downloaded/img-045.jpg"
+                                alt="Workspace with moodboard and color swatches">
+                            <div class="p-3">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <div class="d-flex gap-3">
+                                        <button class="icon-btn" type="button" aria-label="Like post"><i
+                                                class="bi bi-heart-fill text-danger"></i></button>
+                                        <button class="icon-btn" type="button" aria-label="Open comments"><i
+                                                class="bi bi-chat"></i></button>
+                                        <button class="icon-btn" type="button" aria-label="Share post"><i
+                                                class="bi bi-send"></i></button>
+                                    </div>
+                                    <button class="icon-btn" type="button" aria-label="Save post"><i
+                                            class="bi bi-bookmark"></i></button>
+                                </div>
+                                <p class="mb-1 fw-semibold">27,552 likes</p>
+                                <p class="post-caption mb-1"><strong>ui.patterns</strong> Moodboard and type scale for
+                                    the new onboarding flow.</p>
+                                <a class="post-comments d-inline-block mb-1" href="#">View all 530 comments</a>
+                                <p class="post-time mb-0 text-uppercase small-copy">1 day ago</p>
+                            </div>
+                        </article>
+
+                        <!-- Explore block -->
+                        <section id="explore" class="section-card p-3 mb-4" aria-labelledby="explore-heading">
+                            <header class="d-flex align-items-center justify-content-between mb-3">
+                                <h2 id="explore-heading" class="h6 fw-semibold mb-0">Explore</h2>
+                                <a class="small-copy link-accent" href="#">See all</a>
+                            </header>
+                            <div class="explore-grid">
+                                <a class="explore-item" href="#"><img src="media/downloaded/img-033.jpg"
+                                        alt="Street portrait"></a>
+                                <a class="explore-item" href="#"><img src="media/downloaded/img-030.jpg"
+                                        alt="Coding screen closeup"></a>
+                                <a class="explore-item" href="#"><img src="media/downloaded/img-032.jpg"
+                                        alt="Minimal room setup"></a>
+                                <a class="explore-item" href="#"><img src="media/downloaded/img-029.jpg"
+                                        alt="Coffee and notebook"></a>
+                                <a class="explore-item" href="#"><img src="media/downloaded/img-034.jpg"
+                                        alt="Sunset skyline"></a>
+                                <a class="explore-item" href="#"><img src="media/downloaded/img-031.jpg"
+                                        alt="White sneakers on pavement"></a>
+                            </div>
+                        </section>
+
+                        <!-- Reels preview -->
+                        <section id="reels" class="section-card p-3 mb-4" aria-labelledby="reels-heading">
+                            <header class="d-flex align-items-center justify-content-between mb-3">
+                                <h2 id="reels-heading" class="h6 fw-semibold mb-0">Trending Reels</h2>
+                                <a class="small-copy link-accent" href="#">Watch more</a>
+                            </header>
+                            <div class="row g-3">
+                                <article class="col-6 col-md-4">
+                                    <div class="reel-card overflow-hidden">
+                                        <img class="reel-cover" src="media/downloaded/img-035.jpg"
+                                            alt="Fitness reel cover">
+                                        <div class="p-2">
+                                            <p class="small-copy mb-0 fw-semibold">ryan.fit</p>
+                                            <p class="small-copy text-secondary mb-0">1.4M plays</p>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="col-6 col-md-4">
+                                    <div class="reel-card overflow-hidden">
+                                        <img class="reel-cover" src="media/downloaded/img-036.jpg"
+                                            alt="Travel reel cover">
+                                        <div class="p-2">
+                                            <p class="small-copy mb-0 fw-semibold">meera.travel</p>
+                                            <p class="small-copy text-secondary mb-0">930K plays</p>
+                                        </div>
+                                    </div>
+                                </article>
+                                <article class="col-6 col-md-4">
+                                    <div class="reel-card overflow-hidden">
+                                        <img class="reel-cover" src="media/downloaded/img-037.jpg"
+                                            alt="Design reel cover">
+                                        <div class="p-2">
+                                            <p class="small-copy mb-0 fw-semibold">ui.patterns</p>
+                                            <p class="small-copy text-secondary mb-0">2.1M plays</p>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+
+                    </section>
+
+                    <!-- Right rail -->
+                    <aside class="col-lg-5 col-xl-4 d-none d-lg-block">
+                        <div class="ig-right-rail">
+                            <section class="mb-4 section-card p-3" aria-label="Creator tip">
+                                <h2 class="h6 small mb-2 text-secondary fw-semibold">Creator tip</h2>
+                                <p class="small-copy mb-2">Manage profile details, highlights and pinned posts from
+                                    your profile page.</p>
+                                <a href="profile.html" class="small-copy link-accent">Open profile page</a>
+                            </section>
+
+                            <section class="mb-4" aria-labelledby="suggested-heading">
+                                <header class="d-flex align-items-center justify-content-between mb-3">
+                                    <h2 id="suggested-heading" class="h6 small mb-0 text-secondary fw-semibold">
+                                        Suggested for you</h2>
+                                    <a href="#" class="small-copy fw-semibold">See all</a>
+                                </header>
+                                <ul class="d-flex flex-column gap-3">
+                                    <li class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img class="suggested-avatar" src="media/downloaded/img-038.jpg"
+                                                alt="Suggested profile pixeljam">
+                                            <div>
+                                                <p class="small fw-semibold mb-0">pixeljam</p>
+                                                <p class="small-copy text-secondary mb-0">Follows you</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="small-copy link-accent">Follow</a>
+                                    </li>
+                                    <li class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img class="suggested-avatar" src="media/downloaded/img-039.jpg"
+                                                alt="Suggested profile bootstraphq">
+                                            <div>
+                                                <p class="small fw-semibold mb-0">bootstraphq</p>
+                                                <p class="small-copy text-secondary mb-0">Popular now</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="small-copy link-accent">Follow</a>
+                                    </li>
+                                    <li class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img class="suggested-avatar" src="media/downloaded/img-040.jpg"
+                                                alt="Suggested profile cameraframes">
+                                            <div>
+                                                <p class="small fw-semibold mb-0">cameraframes</p>
+                                                <p class="small-copy text-secondary mb-0">New to Instagram</p>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="small-copy link-accent">Follow</a>
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <section class="small-copy text-secondary" aria-label="Footer links">
+                                <p class="mb-2">About â€¢ Help â€¢ Press â€¢ API â€¢ Jobs â€¢ Privacy â€¢ Terms â€¢ Locations</p>
+                                <p class="mb-2">Language â€¢ Meta Verified</p>
+                                <p class="mb-0">Â© 2026 InstaView from Meta</p>
+                            </section>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile bottom nav -->
+        <nav class="ig-mobile-bottom-nav fixed-bottom d-lg-none d-flex align-items-center">
+            <ul class="d-flex justify-content-around align-items-center w-100 mb-0 px-2">
+                <li><a href="#main-feed" aria-label="Go to home"><i class="bi bi-house-door-fill mobile-icon"></i></a></li>
+                <li>
+                    <button class="btn p-0 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchPanel"
+                        aria-label="Open search">
+                        <i class="bi bi-search mobile-icon"></i>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn p-0 border-0" type="button" data-bs-toggle="modal" data-bs-target="#createModal"
+                        aria-label="Create post">
+                        <i class="bi bi-plus-square mobile-icon"></i>
+                    </button>
+                </li>
+                <li><a href="#reels" aria-label="Go to reels"><i class="bi bi-play-btn mobile-icon"></i></a></li>
+                <li><a href="profile.html" aria-label="Go to profile"><i class="bi bi-person-circle mobile-icon"></i></a></li>
+            </ul>
         </nav>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    </div>
+
+    <!-- Search panel -->
+    <aside class="offcanvas offcanvas-start" tabindex="-1" id="searchPanel" aria-labelledby="searchPanelLabel">
+        <div class="offcanvas-header">
+            <h2 class="offcanvas-title h5" id="searchPanelLabel">Search</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form class="mb-4" role="search">
+                <label class="form-label small fw-semibold" for="searchInput">Find profiles, tags and places</label>
+                <input class="form-control" id="searchInput" type="search" placeholder="Search..." aria-label="Search">
+            </form>
+            <h3 class="h6">Recent</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                    <span>#bootstrap</span><i class="bi bi-x-lg text-secondary"></i>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                    <span>@ui.patterns</span><i class="bi bi-x-lg text-secondary"></i>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                    <span>#webdesign</span><i class="bi bi-x-lg text-secondary"></i>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Notifications -->
+    <div class="modal fade" id="notificationsModal" tabindex="-1" aria-labelledby="notificationsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="notificationsModalLabel">Notifications</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                        <li class="list-group-item">kaira.design liked your post.</li>
+                        <li class="list-group-item">ansh.codes started following you.</li>
+                        <li class="list-group-item">ui.patterns mentioned you in a comment.</li>
+                        <li class="list-group-item">ryan.fit shared a new reel.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="modal fade" id="messagesModal" tabindex="-1" aria-labelledby="messagesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="messagesModalLabel">Messages</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <a class="list-group-item list-group-item-action" href="#">aditya.dev - "Pushed the update ðŸš€"</a>
+                        <a class="list-group-item list-group-item-action" href="#">meera.travel - "Trip photos uploaded"</a>
+                        <a class="list-group-item list-group-item-action" href="#">ui.patterns - "Check this Figma file"</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create post -->
+    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="createModalLabel">Create new post</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="postCaption" class="form-label">Caption</label>
+                            <textarea class="form-control" id="postCaption" rows="4"
+                                placeholder="Write a caption..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="postLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="postLocation" placeholder="Add location">
+                        </div>
+                        <button type="button" class="btn btn-primary w-100">Share</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (framework only, no custom JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
+

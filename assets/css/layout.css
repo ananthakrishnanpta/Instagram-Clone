@@ -1,0 +1,66 @@
+/* Page shell */
+body {
+    background: var(--ig-bg);
+    color: var(--ig-text);
+    /* Instagram uses a system UI stack across platforms */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.app-shell {
+    min-height: 100vh;
+}
+
+/* Left nav on desktop/tablet */
+.ig-sidebar {
+    width: var(--sidebar-width);
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid var(--ig-border);
+    background: var(--ig-surface);
+    z-index: 1030;
+}
+
+/* Main feed area */
+.ig-main {
+    width: 100%;
+    padding-top: 1.25rem;
+    padding-bottom: 5rem;
+}
+
+/* Right column for suggestions/trends */
+.ig-right-rail {
+    position: sticky;
+    top: 1.25rem;
+}
+
+/* Mobile top navigation */
+.ig-mobile-top-nav {
+    height: var(--mobile-top-nav-height);
+    background: var(--ig-surface);
+    border-bottom: 1px solid var(--ig-border);
+    z-index: 1040;
+}
+
+/* Mobile bottom navigation */
+.ig-mobile-bottom-nav {
+    height: var(--mobile-bottom-nav-height);
+    background: var(--ig-surface);
+    border-top: 1px solid var(--ig-border);
+    z-index: 1040;
+}
+
+@media (min-width: 992px) {
+    .ig-main {
+        margin-left: var(--sidebar-width);
+        padding-bottom: 2rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .ig-main .container-xxl {
+        max-width: 1240px;
+    }
+}
+
